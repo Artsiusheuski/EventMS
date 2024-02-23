@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import registration from "../actions/registration";
 
 function CreateUser() {
@@ -8,7 +8,6 @@ function CreateUser() {
   const [passwordDirty, setPasswordDirty] = useState(false);
   const [emailError, setEmailError] = useState("The email won't be empty");
   const [passwordError, setPasswordError] = useState("Input password");
-  // const [formValid, setFormValid] = useState(true);
 
   const emailHundler = (event) => {
     setUserEmail(event.target.value);
@@ -49,7 +48,6 @@ function CreateUser() {
     setUserPassword("");
     setEmailError("");
     setPasswordError("");
-    // setFormValid(false);
   };
 
   return (

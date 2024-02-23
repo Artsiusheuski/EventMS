@@ -24,7 +24,7 @@ app.post("/register", (req, res) => {
 });
 app.post("/login", (req, res) => {
   const email = req.body.useremail;
-  const password = res.body.userpassword;
+  const password = req.body.userpassword;
 
   connection.query(
     "SELECT * FROM users WHERE email = ? AND password = ?",
@@ -33,7 +33,7 @@ app.post("/login", (req, res) => {
       if (err) {
         res.send({ err: err });
       }
-      if (result) {
+      if (result.length > 0) {
         res.send(result);
       } else {
         res.send({ message: "Wrong email or password" });

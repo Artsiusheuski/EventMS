@@ -1,14 +1,19 @@
 import axios from "axios";
 
-const login = (useremail, userpassword) => {
+const login = async (useremail, userpassword, login, data) => {
   event.preventDefault();
-  axios
+  await axios
     .post("http://localhost:3001/login", {
       useremail,
       userpassword,
     })
     .then((response) => {
-      console.log(response);
+      if (response.data.message) {
+        alert(response.data.message);
+      } else {
+        login(true);
+        data(response.data);
+      }
     });
 };
 
