@@ -24,7 +24,7 @@ app.post("/register", (req, res) => {
 });
 app.post("/login", (req, res) => {
   const email = req.body.useremail;
-  const password = req.body.userpassword;
+  const password = res.body.userpassword;
 
   connection.query(
     "SELECT * FROM users WHERE email = ? AND password = ?",
