@@ -1,6 +1,8 @@
+import "./userRoom.css";
+
 function UserRoom(props) {
   return (
-    <div>
+    <div className="wrapper__useroom">
       <h1>Your room</h1>
       <ul>
         <li>

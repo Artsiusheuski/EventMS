@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import registration from "../actions/registration";
+import { useSearchParams } from "react-router-dom";
 
 function CreateUser() {
   const [userEmail, setUserEmail] = useState("");
@@ -11,7 +12,6 @@ function CreateUser() {
 
   const emailHundler = (event) => {
     setUserEmail(event.target.value);
-
     const re =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (!re.test(String(event.target.value).toLowerCase())) {

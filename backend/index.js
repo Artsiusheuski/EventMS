@@ -15,10 +15,26 @@ app.post("/register", (req, res) => {
   const password = req.body.userpassword;
 
   connection.query(
-    "INSERT INTO users(email, password) VALUES(?,?)",
+    "SELECT * FROM users WHERE email = ?",
     [email, password],
     (err, result) => {
-      console.log(err);
+      if (err) {
+        res.send({ err: err });
+      }
+      if (result.length > 0) {
+        res.send({ message: "This email already registered!" });
+      } else {
+        connection.query(
+          "INSERT INTO users(email, password) VALUES(?,?)",
+          [email, password],
+          (err) => {
+            res.send({
+              message: `${email} Registration completed successfully`,
+            });
+            console.log(err);
+          }
+        );
+      }
     }
   );
 });

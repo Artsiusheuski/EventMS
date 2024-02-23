@@ -1,6 +1,6 @@
 import { useState } from "react";
 import login from "../actions/login";
-import UserRoom from "./UserRoom";
+import UserRoom from "./userRoom/UserRoom";
 
 function LoginUser() {
   const [userEmail, setUserEmail] = useState("");
