@@ -36,13 +36,7 @@ function UserRoom() {
           <span>{usersData[0].email}</span>
         </li>
         <li>QR</li>
-        <div
-          style={{
-            height: "auto",
-            margin: "0 auto",
-            maxWidth: "70%",
-            width: "100%",
-          }}>
+        <div className="qr">
           <QRCode
             size={256}
             style={{ height: "auto", maxWidth: "100%", width: "100%" }}
