@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import registration from "../actions/registration";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 
 function CreateUser() {
   const [userEmail, setUserEmail] = useState("");

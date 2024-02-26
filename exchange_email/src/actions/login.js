@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const login = async (useremail, userpassword, login, data) => {
+const login = async (event, useremail, userpassword, data, login) => {
   event.preventDefault();
   await axios
     .post("http://localhost:3001/login", {
@@ -13,6 +13,7 @@ const login = async (useremail, userpassword, login, data) => {
       } else {
         login(true);
         data(response.data);
+        sessionStorage.setItem("key", JSON.stringify(response.data));
       }
     });
 };
