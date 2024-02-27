@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const registration = async (useremail, userpassword) => {
+const registration = async (event, useremail, userpassword) => {
   event.preventDefault();
   if (!useremail || !userpassword) {
     alert("Fill in your password and email");

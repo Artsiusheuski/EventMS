@@ -58,6 +58,21 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.post("/login/useroom/scanemail", (req, res) => {
+  const id = req.body.userID;
+
+  connection.query("SELECT * FROM users WHERE id = ?", [id], (err, result) => {
+    if (err) {
+      res.send({ err: err });
+    }
+    if (result.length > 0) {
+      res.send(result[0].email);
+    } else {
+      res.send("Wrong ID");
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("====================================");
   console.log("server run");

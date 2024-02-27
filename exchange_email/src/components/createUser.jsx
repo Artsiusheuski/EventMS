@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import registration from "../actions/registration";
-// import { useSearchParams } from "react-router-dom";
 
 function CreateUser() {
   const [userEmail, setUserEmail] = useState("");
@@ -43,7 +42,6 @@ function CreateUser() {
     }
   };
   const clearForm = () => {
-    emailError || (passwordError && setFormValid(false));
     setUserEmail("");
     setUserPassword("");
     setEmailError("");
@@ -83,7 +81,7 @@ function CreateUser() {
 
         <button
           disabled={emailError || passwordError}
-          onClick={() => registration(userEmail, userPassword)}>
+          onClick={(e) => registration(e, userEmail, userPassword)}>
           Send
         </button>
 

@@ -1,0 +1,18 @@
+.wrapper__showUser {
+    display: flex;
+    padding-top: 10px;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+label {
+    padding: 5px;
+}
+
+.qrScan__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 15px;
+}
