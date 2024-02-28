@@ -1,18 +1,22 @@
 import axios from "axios";
 
-const checkID = async (event, userID, setEmail) => {
+const checkID = (event, userID, setEmail) => {
   event.preventDefault();
-  await axios
+
+  axios
     .post("http://localhost:3001/login/useroom/scanemail", {
       userID,
     })
     .then((response) => {
       if (response.data.message) {
         alert(response.data.message);
+        setEmail("");
       } else {
-        console.log(response.data);
         setEmail(response.data);
       }
+    })
+    .catch((err) => {
+      console.log(err.response.data.message);
     });
 };
 

@@ -4,15 +4,15 @@ import { useState } from "react";
 import checkID from "../../actions/checkID";
 
 function ShowUser() {
-  const [qrResult, setQrResult] = useState("email...");
+  const [qrResult, setQrResult] = useState("");
   const [orderMethodEnter, setOrderMethodEnter] = useState("Enter ID");
   const [userID, setUserID] = useState("");
 
-  function changeMethod() {
+  const changeMethod = () => {
     orderMethodEnter === "Enter ID"
       ? setOrderMethodEnter("Scan QR")
       : setOrderMethodEnter("Enter ID");
-  }
+  };
 
   return (
     <div className="wrapper__showUser">
@@ -30,7 +30,9 @@ function ShowUser() {
           <button onClick={(e) => checkID(e, userID, setQrResult)}>
             Check ID
           </button>
-          <p>{qrResult}</p>
+          <p>
+            <a href={`mailto:${qrResult}`}>{qrResult}</a>
+          </p>
         </div>
       )}
       {orderMethodEnter !== "Scan QR" && (
@@ -38,7 +40,9 @@ function ShowUser() {
           <div className="qrScan__wrapper">
             <QrScanner onDecode={(result) => setQrResult(result)} />
           </div>
-          <p>{qrResult}</p>
+          <p>
+            <a href={`mailto:${qrResult}`}>{qrResult}</a>
+          </p>
         </div>
       )}
     </div>

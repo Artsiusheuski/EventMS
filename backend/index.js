@@ -68,7 +68,7 @@ app.post("/login/useroom/scanemail", (req, res) => {
     if (result.length > 0) {
       res.send(result[0].email);
     } else {
-      res.send("Wrong ID");
+      res.send({ message: "Wrong ID" });
     }
   });
 });

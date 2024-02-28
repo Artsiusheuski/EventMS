@@ -3,6 +3,9 @@
   min-width: 20vw;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width:920px) {
@@ -22,4 +25,5 @@
   flex-direction: column;
   gap: 5px;
   width: 25vw;
+  ;
 }

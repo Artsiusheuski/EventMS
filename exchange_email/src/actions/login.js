@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const login = async (event, useremail, userpassword, data, login) => {
+const login = (event, useremail, userpassword, data, login) => {
   event.preventDefault();
-  await axios
+
+  axios
     .post("http://localhost:3001/login", {
       useremail,
       userpassword,
@@ -15,6 +16,9 @@ const login = async (event, useremail, userpassword, data, login) => {
         data(response.data);
         sessionStorage.setItem("key", JSON.stringify(response.data));
       }
+    })
+    .catch((err) => {
+      console.log(err.response.data.message);
     });
 };
 

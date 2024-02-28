@@ -11,18 +11,10 @@ function UserRoom() {
   let usersData = useSelector((state) => state.usersData.value);
   let usersLog = useSelector((state) => state.usersData.login);
 
-  function exitRoom() {
+  const exitRoom = () => {
     dispatch(clear(false));
     sessionStorage.clear();
-  }
-
-  // if (!usersLog) {
-  //   return (
-  //     <div>
-  //       <h1>Sorry.....you need to log In</h1>
-  //     </div>
-  //   );
-  // }
+  };
 
   return (
     <>
@@ -31,7 +23,6 @@ function UserRoom() {
         <Link className="link__style" to="/login/useroom/scanemail">
           Scan QR or Enter ID
         </Link>
-
         <ul>
           <li>
             ID:

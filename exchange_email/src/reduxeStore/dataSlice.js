@@ -18,5 +18,4 @@ export const dataSlice = createSlice({
 });
 
 export const { getData, clear } = dataSlice.actions;
-// export const actualData = (state) => state.users.value;
 export default dataSlice.reducer;

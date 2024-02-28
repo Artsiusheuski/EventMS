@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import registration from "../actions/registration";
 
 function CreateUser() {
@@ -11,9 +11,9 @@ function CreateUser() {
 
   const emailHundler = (event) => {
     setUserEmail(event.target.value);
-    const re =
+    const regular =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (!re.test(String(event.target.value).toLowerCase())) {
+    if (!regular.test(String(event.target.value).toLowerCase())) {
       setEmailError("The Email no-correct");
     } else {
       setEmailError("");
@@ -78,14 +78,12 @@ function CreateUser() {
           type="password"
           placeholder="Enter your password....."
         />
-
         <button
           disabled={emailError || passwordError}
           onClick={(e) => registration(e, userEmail, userPassword)}>
           Send
         </button>
-
-        <button formAction="reset" type="reset" onClick={clearForm}>
+        <button onClick={clearForm} type="reset">
           Reset
         </button>
       </form>

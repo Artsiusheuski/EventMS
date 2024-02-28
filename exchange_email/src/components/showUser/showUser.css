@@ -3,7 +3,6 @@
     padding-top: 10px;
     flex-direction: column;
     width: 100%;
-
 }
 
 label {
@@ -15,4 +14,8 @@ label {
     width: 100%;
     justify-content: center;
     padding-top: 15px;
+}
+
+.wrapper__showUser input {
+    margin: 5px;
 }
