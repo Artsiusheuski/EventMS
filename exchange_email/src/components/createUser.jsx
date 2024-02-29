@@ -1,5 +1,10 @@
 import { useState } from "react";
 import registration from "../actions/registration";
+import {
+  emailHundler,
+  passwordHundler,
+  blurHundler,
+} from "../helpers/hundlers";
 
 function CreateUser() {
   const [userEmail, setUserEmail] = useState("");
@@ -9,38 +14,6 @@ function CreateUser() {
   const [emailError, setEmailError] = useState("The email won't be empty");
   const [passwordError, setPasswordError] = useState("Input password");
 
-  const emailHundler = (event) => {
-    setUserEmail(event.target.value);
-    const regular =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (!regular.test(String(event.target.value).toLowerCase())) {
-      setEmailError("The Email no-correct");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  const passwordHundler = (event) => {
-    setUserPassword(event.target.value.trim());
-    if (event.target.value.length < 5 || event.target.value.length > 9) {
-      setPasswordError(
-        "The password must contain at least 5 and no more than 9 characters."
-      );
-    } else {
-      setPasswordError("");
-    }
-  };
-
-  const blurHundler = (event) => {
-    switch (event.target.name) {
-      case "email":
-        setEmailDirty(true);
-        break;
-      case "password":
-        setPasswordDirty(true);
-        break;
-    }
-  };
   const clearForm = () => {
     setUserEmail("");
     setUserPassword("");
@@ -58,8 +31,8 @@ function CreateUser() {
 
         <input
           onChange={(e) => setUserEmail(e.target.value)}
-          onInput={emailHundler}
-          onBlur={blurHundler}
+          onInput={(e) => emailHundler(e, setUserEmail, setEmailError)}
+          onBlur={(e) => blurHundler(e, setEmailDirty, setPasswordDirty)}
           name="email"
           value={userEmail}
           type="email"
@@ -71,8 +44,8 @@ function CreateUser() {
 
         <input
           onChange={(e) => setUserPassword(e.target.value)}
-          onInput={passwordHundler}
-          onBlur={blurHundler}
+          onInput={(e) => passwordHundler(e, setUserPassword, setPasswordError)}
+          onBlur={(e) => blurHundler(e, setEmailDirty, setPasswordDirty)}
           name="password"
           value={userPassword}
           type="password"
